@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-04-27 15:08:09
- * @LastEditTime: 2020-06-04 15:00:31
+ * @LastEditTime: 2020-06-08 15:54:51
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -12,6 +12,7 @@ import request from './utils/request'
 import './utils/vant-components'
 import 'amfe-flexible'
 import './assets/cssreset.css'
+import './permission'
 Vue.prototype.$request = request
 Vue.config.productionTip = false
 import moment from 'moment' // 导入文件

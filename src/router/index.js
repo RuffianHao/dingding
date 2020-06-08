@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-04-27 15:08:09
- * @LastEditTime: 2020-06-08 14:19:44
+ * @LastEditTime: 2020-06-08 17:49:10
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -126,7 +126,7 @@ const routes = [
   },
   {
     path: '/receive-consent/details/:id',
-    name: 'ReceiveDetails',
+    name: 'ReceiveConsentDetails',
     component: () => import('../views/receive-consent/details.vue'),
     meta: {
       title: '领用确认'
@@ -150,19 +150,145 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
-  routes
-})
-// router.beforeEach(async (to, from, next) => {
-//   dd.ready(function() {
-//     dd.biz.navigation.setTitle({
-//       title: to.meta.title,
-//       onSuccess: function(result) {
-//         next()
-//       },
-//       onFail: function(err) {}
-//     })
+export const constantRoutes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: '鹍骐物品管理系统'
+    }
+  },
+  {
+    path: '/purchase',
+    name: 'Purchase',
+    component: () => import('../views/purchase'),
+    meta: { nav: true, title: '采购申请' }
+  },
+  {
+    path: '/purchase/details/:id',
+    name: 'PurchaseDetails',
+    component: () => import('../views/purchase/details.vue'),
+    meta: {
+      title: '采购申请'
+    }
+  },
+  {
+    path: '/purchase/modify/:id',
+    name: 'PurchaseModify',
+    component: () => import('../views/purchase'),
+    meta: {
+      title: '修改申请'
+    }
+  },
+  {
+    path: '/receive',
+    name: 'Receive',
+    component: () => import('../views/receive'),
+    meta: { nav: true, title: '领用申请' }
+  },
+  {
+    path: '/receive/details/:id',
+    name: 'ReceiveDetails',
+    component: () => import('../views/receive/details.vue'),
+    meta: {
+      title: '领用详情'
+    }
+  },
+  {
+    path: '/receive/modify/:id',
+    name: 'ReceiveModify',
+    component: () => import('../views/receive'),
+    meta: {
+      title: '领用修改'
+    }
+  }
+]
+export const asyncRoutes = [
+  {
+    path: '/stock',
+    name: 'Stock',
+    component: () => import('../views/stock/index.vue'),
+    meta: { nav: true, title: '物品列表', roles: ['isBoss'] }
+  },
+  {
+    path: '/record',
+    name: 'Record',
+    component: () => import('../views/record'),
+    meta: { title: '历史记录', roles: ['isBoss'] }
+  },
+  {
+    path: '/receive-consent',
+    name: 'ReceiveConsent',
+    component: () => import('../views/receive-consent'),
+    meta: { nav: true, title: '领用确认', roles: ['isLeaderInDepts'] }
+  },
+  {
+    path: '/receive-consent/details/:id',
+    name: 'ReceiveContestDetails',
+    component: () => import('../views/receive-consent/details.vue'),
+    meta: {
+      title: '领用详情',
+      roles: ['isLeaderInDepts']
+    }
+  },
+  {
+    path: '/purchaing-sign',
+    name: 'PurchaingSign',
+    component: () => import('../views/purchase-sign/index.vue'),
+    meta: { nav: true, title: '签收入库', roles: ['isBoss'] }
+  },
+  {
+    path: '/purchaing-sign/details/:id',
+    name: 'PurchaingSignDetails',
+    component: () => import('../views/purchase-sign/details.vue'),
+    meta: {
+      title: '采购详情',
+      roles: ['isLeaderInDepts']
+    }
+  },
+  {
+    path: '/audit',
+    name: 'Audit',
+    component: () => import('../views/audit'),
+    meta: { nav: true, title: '采购审批', roles: ['isLeaderInDepts'] }
+  },
+  {
+    path: '/audit/details/:id',
+    name: 'AuditDetails',
+    component: () => import('../views/audit/details.vue'),
+    meta: {
+      title: '审批详情',
+      roles: ['isLeaderInDepts']
+    }
+  },
+  {
+    path: '/goods',
+    name: 'Goods',
+    component: () => import('../views/goods'),
+    meta: {
+      title: '物品添加',
+      roles: ['isBoss']
+    }
+  },
+  {
+    path: '/goods/modify/:id',
+    name: 'GoodsModify',
+    component: () => import('../views/goods'),
+    meta: {
+      title: '物品修改',
+      roles: ['isBoss']
+    }
+  }
+]
+// const createRouter = () =>
+//   new VueRouter({
+//     // mode: 'history', // require service support
+//     routes: constantRoutes
 //   })
-// })
+
+const router = new VueRouter({
+  routes: constantRoutes
+})
 
 export default router

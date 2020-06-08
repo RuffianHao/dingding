@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-04-30 16:19:48
- * @LastEditTime: 2020-06-08 13:10:50
+ * @LastEditTime: 2020-06-08 17:50:18
  */
 
 import axios from 'axios'
@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true
 const request = axios.create({
   // http://dingtalk.caicaishouyou.com/index/
 
-  baseURL: 'http://192.168.1.193:5000/' // 设置公用请求api前置
+  baseURL: 'http://192.168.1.125:5000/' // 设置公用请求api前置
 })
 // request.interceptors.request.use(function(response) {
 //   if (response.method === 'post') {

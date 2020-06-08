@@ -1,13 +1,14 @@
 /*
  * @Description:
  * @Date: 2020-06-07 21:27:50
- * @LastEditTime: 2020-06-08 14:38:40
+ * @LastEditTime: 2020-06-08 17:37:07
  */
 import * as dd from 'dingtalk-jsapi'
 import request from '../../utils/request'
 const state = {
   userInfo: {},
-  roles: []
+  roles: [],
+  defaultRoles: ['isAdmin', 'isBoss', 'isLeaderInDepts', 'isSenior']
 }
 const mutations = {
   SET_USER(state, data) {
@@ -18,7 +19,7 @@ const mutations = {
   }
 }
 const actions = {
-  login({ commit }) {
+  login({ commit, dispatch }) {
     return new Promise(async (resolve, reject) => {
       dd.ready(function() {
         dd.runtime.permission.requestAuthCode({
@@ -32,25 +33,28 @@ const actions = {
               }
             })
             commit('SET_USER', data.body)
-            resolve()
+            let roles = await dispatch('getRoles')
+            resolve(roles)
           },
           onFail: function(err) {
-            alert(JSON.stringify(err))
+            // alert(JSON.stringify(err))
             reject()
           }
         })
       })
     })
   },
-  getRoles({ commit, state }, roles) {
+  getRoles({ commit, state }) {
     return new Promise((resolve) => {
       let roles = []
       const userInfo = state.userInfo
-      const creatRole = ['isAdmin', 'isBoss', 'isLeaderInDepts', 'isSenior']
-
-      creatRole.forEach((key) => {
-        if (userInfo[key] === false) roles.push(key)
+      // const createRoles = ['isAdmin', 'isBoss', 'isLeaderInDepts', 'isSenior']
+      state.defaultRoles.forEach((key) => {
+        if (userInfo[key] === true) {
+          roles.push(key)
+        }
       })
+
       commit('SET_ROLES', roles)
       resolve(roles)
     })

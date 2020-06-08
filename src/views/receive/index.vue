@@ -1,7 +1,7 @@
 <!--
  * @Description: 理事申请
  * @Date: 2020-05-28 16:34:19
- * @LastEditTime: 2020-06-08 11:26:28
+ * @LastEditTime: 2020-06-08 17:45:11
 -->
 <template>
   <div class="applied">

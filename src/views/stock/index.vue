@@ -1,7 +1,7 @@
 <!--
  * @Description: 
  * @Date: 2020-04-27 17:36:03
- * @LastEditTime: 2020-06-04 15:56:15
+ * @LastEditTime: 2020-06-08 16:07:50
  -->
 <template>
   <div class="stock">
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     toStockIn() {
-      this.$router.push('/Goods')
+      this.$router.push('/goods')
     },
     record() {
       this.$router.push('/record')
