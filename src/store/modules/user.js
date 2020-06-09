@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-06-07 21:27:50
- * @LastEditTime: 2020-06-08 17:37:07
+ * @LastEditTime: 2020-06-09 14:45:01
  */
 import * as dd from 'dingtalk-jsapi'
 import request from '../../utils/request'
@@ -48,8 +48,8 @@ const actions = {
     return new Promise((resolve) => {
       let roles = []
       const userInfo = state.userInfo
-      // const createRoles = ['isAdmin', 'isBoss', 'isLeaderInDepts', 'isSenior']
-      state.defaultRoles.forEach((key) => {
+      const createRoles = ['isAdmin', 'isBoss', 'isLeaderInDepts', 'isSenior']
+      createRoles.forEach((key) => {
         if (userInfo[key] === true) {
           roles.push(key)
         }

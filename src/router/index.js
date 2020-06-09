@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-04-27 15:08:09
- * @LastEditTime: 2020-06-08 17:49:10
+ * @LastEditTime: 2020-06-09 14:50:20
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -190,7 +190,7 @@ export const constantRoutes = [
   {
     path: '/receive/details/:id',
     name: 'ReceiveDetails',
-    component: () => import('../views/receive/details.vue'),
+    component: () => import('../views/receive/details'),
     meta: {
       title: '领用详情'
     }
@@ -209,7 +209,7 @@ export const asyncRoutes = [
     path: '/stock',
     name: 'Stock',
     component: () => import('../views/stock/index.vue'),
-    meta: { nav: true, title: '物品列表', roles: ['isBoss'] }
+    meta: { nav: true, title: '物品列表', roles: ['isAdmin'] }
   },
   {
     path: '/record',
@@ -241,7 +241,7 @@ export const asyncRoutes = [
   {
     path: '/purchaing-sign/details/:id',
     name: 'PurchaingSignDetails',
-    component: () => import('../views/purchase-sign/details.vue'),
+    component: () => import('../views/purchase-sign/details'),
     meta: {
       title: '采购详情',
       roles: ['isLeaderInDepts']

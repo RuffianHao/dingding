@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-06-05 19:04:06
- * @LastEditTime: 2020-06-08 17:38:40
+ * @LastEditTime: 2020-06-09 11:39:40
  */
 
 import { asyncRoutes, constantRoutes } from '../../router/index'
@@ -51,7 +51,6 @@ const actions = {
       if (roles.includes('isAdmin')) {
         accessedRoutes = asyncRoutes || []
       } else {
-        // alert(roles)
         accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
       }
       commit('SET_ROUTES', accessedRoutes)

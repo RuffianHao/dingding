@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2020-06-07 18:27:17
- * @LastEditTime: 2020-06-08 17:43:21
+ * @LastEditTime: 2020-06-09 14:55:13
  */
 import router from './router'
 import store from './store'
@@ -20,20 +20,28 @@ router.beforeEach(async (to, from, next) => {
   const hasRoles = store.getters.roles && store.getters.roles.length > 0
 
   if (hasRoles) {
-    next()
-    // let routePath = store.getters.permission_routes.map((route) => {
-    //   return route.path
-    // })
-    // if (!routePath.includes(to.path)) {
-    //   next({ path: from.path })
-    //   alert('没有权限访问该页面')
-    // } else {
-    //   next()
-    // }
+    let roles = store.getters.roles
+    if (to.meta.roles === undefined) {
+      next()
+    } else {
+      let toRoles = to.meta.roles || []
+      toRoles.forEach((role) => {
+        if (roles.includes('isAdmin')) {
+          next()
+        } else {
+          if (roles.includes(role)) {
+            next()
+          } else {
+            alert('没权限')
+            next({ path: '/' })
+          }
+        }
+      })
+    }
   } else {
     try {
       const roles = await store.dispatch('user/login')
-
+      store.commit('user/SET_ROLES', roles)
       const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
       router.addRoutes(accessRoutes)

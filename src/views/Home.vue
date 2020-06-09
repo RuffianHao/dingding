@@ -1,7 +1,7 @@
 <!--
  * @Description: 
  * @Date: 2020-05-22 16:18:58
- * @LastEditTime: 2020-06-08 17:33:28
+ * @LastEditTime: 2020-06-09 14:54:05
 -->
 
 <template>
@@ -12,7 +12,7 @@
 
     <!-- <van-cell title="物品管理" size="large" icon="records" @click="$router.push('stock')" />
     <van-cell title="采购申请" size="large" icon="records" @click="$router.push('purchase')" />
-     <van-cell title="商品录入" size="large" icon="records" @click="$router.push('goods')" />]
+    <van-cell title="商品录入" size="large" icon="records" @click="$router.push('goods')" />
     <van-cell title="领用申请" size="large" icon="records" @click="$router.push('receive')" />
     <van-cell title="领用确认" size="large" icon="records" @click="$router.push('receive-consent')" />
     <van-cell title="签收入库" size="large" icon="records" @click="$router.push('purchaing-sign')" />

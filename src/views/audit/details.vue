@@ -1,7 +1,7 @@
 <!--
  * @Description: 
  * @Date: 2020-06-04 14:02:27
- * @LastEditTime: 2020-06-04 16:30:59
+ * @LastEditTime: 2020-06-09 10:33:36
 -->
 <template>
   <Details leftBtnText="拒绝" rightBtnText="通过" :resUrl="resUrl" :id="id" @leftClick="onIsPass(2)" @rightClick="onIsPass(1)"></Details>

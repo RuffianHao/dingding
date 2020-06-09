@@ -1,15 +1,16 @@
 <!--
  * @Description: 
  * @Date: 2020-06-04 14:02:27
- * @LastEditTime: 2020-06-08 11:25:38
+ * @LastEditTime: 2020-06-09 11:28:01
 -->
 <template>
   <Details leftBtnText="取消" rightBtnText="修改" :resUrl="resUrl" :id="id" @leftClick="cancelReceive" @rightClick="modifyReceive"></Details>
 </template>
 
 <script>
+import Details from '../../components/details'
 export default {
-  components: {},
+  components: { Details },
   data() {
     return {
       resUrl: '/receive',

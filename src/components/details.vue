@@ -1,7 +1,7 @@
 <!--
  * @Description: 
  * @Date: 2020-06-04 11:15:28
- * @LastEditTime: 2020-06-05 14:07:01
+ * @LastEditTime: 2020-06-09 11:32:54
 -->
 
 <template>
@@ -119,13 +119,18 @@ export default {
           id: this.id
         }
       })
-      if (data.body.data.hasOwnProperty('application_items')) {
-        this.goodsInfo = data.body.data.application_items
+      if (data.status === 200) {
+        if (data.body.data.hasOwnProperty('application_items')) {
+          this.goodsInfo = data.body.data.application_items
+        } else {
+          this.goodsInfo = data.body.data.goods
+        }
+        this.detailsInfo = data.body.data
+        this.bthShow = data.body.data.cancel
       } else {
-        this.goodsInfo = data.body.data.goods
+        alert(data.msg)
+        this.$router.go(-1)
       }
-      this.detailsInfo = data.body.data
-      this.bthShow = data.body.data.cancel
     },
     leftClick() {
       this.$emit('leftClick')
